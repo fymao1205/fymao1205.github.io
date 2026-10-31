@@ -1,0 +1,1191 @@
+<title>Fangya Mao, Ph.D.</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap">
+
+<style>
+/* === Layout: fixed left sidebar + scrollable right content, Google Sites style === */
+:root {
+  --navy:      #1a2d4f;
+  --navy-mid:  #243d6a;
+  --navy-light:#e8edf5;
+  --gold:      #c49a28;
+  --talk-inv:  var(--gold);
+  --talk-tc:   var(--border);
+  --bg:        #ffffff;
+  --bg-soft:   #f5f7fa;
+  --fg:        #1a1a2e;
+  --fg-mid:    #3d4460;
+  --fg-mute:   #6b7390;
+  --border:    #d6dce8;
+  --link:      #1e4a8a;
+  --sidebar-w: 260px;
+  color-scheme: light;
+  --font-serif: 'EB Garamond', Georgia, serif;
+  --font-sans:  'Inter', system-ui, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --navy:      #2a4270;
+    --navy-mid:  #1e3260;
+    --navy-light:#1a2540;
+    --gold:      #d4aa40;
+    --talk-inv:  #d4664e;
+    --talk-tc:   #3d8f68;
+    --bg:        #0f1623;
+    --bg-soft:   #16202f;
+    --fg:        #e8ecf4;
+    --fg-mid:    #b0bcd8;
+    --fg-mute:   #7a8aaa;
+    --border:    #2a3650;
+    --link:      #7aadee;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --navy:      #2a4270;
+  --navy-mid:  #1e3260;
+  --navy-light:#1a2540;
+  --gold:      #d4aa40;
+  --talk-inv:  var(--gold);
+  --talk-tc:   var(--border);
+  --bg:        #0f1623;
+  --bg-soft:   #16202f;
+  --fg:        #e8ecf4;
+  --fg-mid:    #b0bcd8;
+  --fg-mute:   #7a8aaa;
+  --border:    #2a3650;
+  --link:      #7aadee;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--fg);
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding-left: max(0px, env(safe-area-inset-left, 0px));
+  padding-right: max(0px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+}
+
+/* === TOP NAV BAR === */
+.topbar {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 200;
+  background: var(--navy);
+  display: flex;
+  align-items: center;
+  height: 54px;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  flex-shrink: 0;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  background: var(--navy);
+  z-index: 300;
+}
+
+.topbar-title {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: 0.01em;
+  margin-right: auto;
+}
+
+/* hamburger for mobile */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.85);
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+.menu-toggle:hover { background: rgba(255,255,255,0.12); }
+
+/* === PAGE LAYOUT === */
+.layout {
+  display: flex;
+  flex: 1;
+  align-items: stretch;
+}
+
+/* === LEFT SIDEBAR === */
+.sidebar {
+  width: var(--sidebar-w);
+  flex-shrink: 0;
+  background: var(--navy-light);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 54px;
+  height: calc(100vh - 54px);
+  overflow-y: auto;
+  padding: 28px 20px 32px;
+  gap: 0;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .sidebar { background: var(--bg-soft); }
+}
+:root[data-theme="dark"] .sidebar { background: var(--bg-soft); }
+
+/* photo */
+.sidebar-photo {
+  width: 140px;
+  height: 170px;
+  border-radius: 6px;
+  background: linear-gradient(145deg, var(--navy), var(--navy-mid));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.5);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  margin: 0 auto 20px;
+  border: 2px solid var(--border);
+  overflow: hidden;
+}
+.sidebar-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+.sidebar-name {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--navy);
+  text-align: center;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .sidebar-name { color: var(--fg); }
+}
+:root[data-theme="dark"] .sidebar-name { color: var(--fg); }
+
+.sidebar-role {
+  font-size: 0.78rem;
+  color: var(--fg-mute);
+  text-align: center;
+  line-height: 1.45;
+  margin-bottom: 20px;
+}
+
+/* divider */
+.sidebar-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 12px 0;
+}
+
+/* contact block */
+.sidebar-section-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .sidebar-section-label { color: var(--gold); }
+}
+:root[data-theme="dark"] .sidebar-section-label { color: var(--gold); }
+
+.contact-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-bottom: 4px;
+}
+.contact-list li {
+  font-size: 0.8rem;
+  color: var(--fg-mid);
+  line-height: 1.45;
+}
+.contact-list li strong {
+  display: block;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--fg-mute);
+  font-weight: 600;
+  margin-bottom: 1px;
+}
+.contact-list a {
+  color: var(--link);
+  text-decoration: none;
+  word-break: break-all;
+}
+.contact-list a:hover { text-decoration: underline; }
+
+/* education / appointments in sidebar */
+.sidebar-info {
+  font-size: 0.79rem;
+  color: var(--fg-mid);
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.sidebar-info .entry-title {
+  font-weight: 600;
+  color: var(--fg);
+  font-size: 0.8rem;
+}
+.sidebar-info .entry-sub {
+  color: var(--fg-mute);
+  font-size: 0.76rem;
+}
+
+/* link buttons */
+.sidebar-links {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 4px;
+}
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 10px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--fg-mid);
+  text-decoration: none;
+  transition: border-color 0.15s, color 0.15s;
+}
+.sidebar-link:hover {
+  border-color: var(--navy);
+  color: var(--navy);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .sidebar-link { background: var(--bg); }
+  :root:not([data-theme="light"]) .sidebar-link:hover { border-color: var(--link); color: var(--link); }
+}
+:root[data-theme="dark"] .sidebar-link { background: var(--bg); }
+:root[data-theme="dark"] .sidebar-link:hover { border-color: var(--link); color: var(--link); }
+
+.sidebar-link-icon {
+  font-size: 0.95rem;
+  opacity: 0.75;
+}
+
+/* === RIGHT CONTENT === */
+.content {
+  flex: 1;
+  min-width: 0;
+  padding: 40px 48px 64px 48px;
+}
+
+/* page nav tabs — like Google Sites nav links at top of content */
+.page-nav {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 36px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.page-nav::-webkit-scrollbar { display: none; }
+
+.page-btn {
+  padding: 9px 16px;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--fg-mute);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.15s, border-color 0.15s;
+}
+.page-btn:hover { color: var(--fg-mid); }
+.page-btn.active {
+  color: var(--navy);
+  border-bottom-color: var(--gold);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .page-btn.active { color: var(--fg); }
+}
+:root[data-theme="dark"] .page-btn.active { color: var(--fg); }
+
+.page-panel { display: none; }
+.page-panel.active { display: block; }
+
+/* === CONTENT ELEMENTS === */
+.section-head {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--navy);
+  margin-bottom: 18px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+  text-wrap: balance;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .section-head { color: var(--fg); }
+}
+:root[data-theme="dark"] .section-head { color: var(--fg); }
+
+.sub-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 28px 0 12px;
+}
+
+.blurb {
+  font-size: 0.92rem;
+  color: var(--fg-mid);
+  line-height: 1.78;
+  max-width: 680px;
+  margin-bottom: 32px;
+}
+
+/* cv table */
+.cv-table { width: 100%; border-collapse: collapse; }
+.cv-table td {
+  padding: 9px 12px 9px 0;
+  vertical-align: top;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.87rem;
+  color: var(--fg-mid);
+  line-height: 1.55;
+}
+.cv-table td:first-child {
+  width: 80px;
+  color: var(--fg-mute);
+  font-size: 0.78rem;
+  font-variant-numeric: tabular-nums;
+  padding-right: 16px;
+  white-space: nowrap;
+}
+.cv-table td strong { color: var(--fg); }
+.cv-table td .inst { font-size: 0.81rem; color: var(--fg-mute); }
+
+/* pub list — card style */
+.pub-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.pub-item {
+  padding: 13px 15px;
+  background: var(--bg-soft);
+  border-radius: 6px;
+  border-left: 3px solid var(--border);
+  font-size: 0.87rem;
+  line-height: 1.68;
+  color: var(--fg-mid);
+  transition: border-color 0.15s;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.pub-item.method { border-left-color: var(--navy); }
+.pub-item.collab  { border-left-color: var(--gold); }
+.pub-item.abstract { border-left-color: var(--border); }
+.pub-item.talk-inv { border-left-color: var(--talk-inv); }
+.pub-item.talk-tc  { border-left-color: var(--talk-tc); }
+.pub-item a { color: var(--link); text-decoration: none; font-size: 0.82rem; }
+.pub-item a:hover { text-decoration: underline; }
+.pub-me { font-weight: 700; color: var(--fg); }
+.pub-footer { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.pub-badges { display: inline-flex; gap: 4px; flex-wrap: wrap; }
+.pub-badge {
+  display: inline-block;
+  font-size: 0.67rem;
+  padding: 1px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.badge-cofirst { background: var(--gold); color: #fff; }
+.badge-corr    { background: var(--navy); color: #fff; opacity: 0.9; }
+.news-emoji { margin-right: 6px; }
+.badge-first   { background: transparent; color: var(--link); border: 1px solid var(--link); padding: 0 7px; }
+.news-item .pub-badge { margin-left: 4px; vertical-align: 1px; }
+.pub-year-group { margin-bottom: 24px; }
+.pub-year-heading {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--navy);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 4px;
+  margin-bottom: 10px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .pub-year-heading { color: var(--fg); }
+  :root:not([data-theme="light"]) .pub-item.method { border-left-color: #5080c0; }
+}
+:root[data-theme="dark"] .pub-year-heading { color: var(--fg); }
+:root[data-theme="dark"] .pub-item.method { border-left-color: #5080c0; }
+
+/* talk list — plain scholarly style */
+.talk-year-group { margin-bottom: 28px; }
+.talk-year-heading {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--navy);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 4px;
+  margin-bottom: 10px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .talk-year-heading { color: var(--fg); }
+}
+:root[data-theme="dark"] .talk-year-heading { color: var(--fg); }
+.talk-entries { list-style: none; display: flex; flex-direction: column; gap: 0; }
+.talk-entry {
+  font-size: 0.87rem;
+  line-height: 1.7;
+  color: var(--fg-mid);
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+.talk-entry:last-child { border-bottom: none; }
+.talk-entry em { font-style: italic; color: var(--fg); }
+.talk-entry .talk-role {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-right: 4px;
+}
+
+/* simple list */
+.simple-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+.simple-item {
+  display: flex;
+  gap: 14px;
+  font-size: 0.87rem;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--fg-mid);
+  align-items: baseline;
+}
+.si-yr {
+  min-width: 72px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--fg-mute);
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+.simple-item strong { color: var(--fg); }
+
+/* news list */
+.news-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+.news-item {
+  padding: 11px 0 11px 16px;
+  border-left: 3px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.87rem;
+  line-height: 1.6;
+  color: var(--fg-mid);
+  transition: border-left-color 0.15s;
+}
+.news-item:hover { border-left-color: var(--gold); }
+.news-item:last-child { border-bottom: none; }
+.news-item em { font-style: italic; color: var(--fg); }
+.news-item strong { color: var(--fg); }
+.news-date {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 2px;
+  letter-spacing: 0.04em;
+}
+
+/* software cards */
+.sw-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.sw-card {
+  padding: 14px 16px;
+  background: var(--bg-soft);
+  border-radius: 6px;
+  font-size: 0.87rem;
+  line-height: 1.6;
+  color: var(--fg-mid);
+  border-left: 3px solid var(--gold);
+}
+.sw-card strong a { color: var(--link); text-decoration: none; font-size: 0.92rem; }
+.sw-card strong a:hover { text-decoration: underline; }
+
+/* === RESPONSIVE === */
+@media (max-width: 720px) {
+  .sidebar {
+    position: fixed;
+    left: 0; top: 54px;
+    height: calc(100vh - 54px);
+    z-index: 150;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    width: min(var(--sidebar-w), 85vw);
+    box-shadow: 4px 0 24px rgba(0,0,0,0.15);
+  }
+  .sidebar.open { transform: translateX(0); }
+  .menu-toggle { display: block; }
+  .content { padding: 28px 20px 56px; }
+  .page-btn { padding: 8px 11px; font-size: 0.78rem; }
+
+  /* overlay when sidebar open */
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 54px 0 0;
+    background: rgba(0,0,0,0.35);
+    z-index: 140;
+  }
+  .sidebar-overlay.show { display: block; }
+}
+</style>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <span class="topbar-title">Fangya Mao, Ph.D.</span>
+  <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+</div>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar" id="sidebar">
+
+    <div class="sidebar-photo">Photo</div>
+
+    <div class="sidebar-name">Fangya Mao, Ph.D.</div>
+    <div class="sidebar-role">Assistant Professor<br>Department of Biostatistics<br>University at Buffalo</div>
+
+    <hr class="sidebar-divider">
+
+    <div class="sidebar-section-label">Contact</div>
+    <ul class="contact-list">
+      <li>
+        <strong>Name</strong>
+        Fangya Mao
+      </li>
+      <li>
+        <strong>Email</strong>
+        fangyama@buffalo.edu
+      </li>
+      <li>
+        <strong>Office</strong>
+        807 Kimball, UB School of Public Health and Health Professions
+      </li>
+      <li>
+        <strong>ORCID</strong>
+        <a href="https://orcid.org/0000-0003-1162-4348" target="_blank">0000-0003-1162-4348</a>
+      </li>
+    </ul>
+
+    <hr class="sidebar-divider">
+
+    <div class="sidebar-section-label">Academic Appointments</div>
+    <div class="sidebar-info">
+      <div>
+        <div class="entry-title">Tenure-Track Assistant Professor</div>
+        <div class="entry-sub">Dept. of Biostatistics, University at Buffalo, 2026–Present</div>
+      </div>
+      <div>
+        <div class="entry-title">Postdoctoral Fellow</div>
+        <div class="entry-sub">Biostatistics Branch, DCEG, NCI/NIH, 2022–2026</div>
+      </div>
+    </div>
+
+    <hr class="sidebar-divider">
+
+    <div class="sidebar-section-label">Education</div>
+    <div class="sidebar-info">
+      <div>
+        <div class="entry-title">Ph.D., Statistics–Biostatistics</div>
+        <div class="entry-sub">University of Waterloo, 2022</div>
+      </div>
+    </div>
+
+    <hr class="sidebar-divider">
+
+    <div class="sidebar-section-label">Links</div>
+    <div class="sidebar-links">
+      <a href="https://scholar.google.com/citations?hl=en&user=Vz_OVVcAAAAJ" target="_blank" class="sidebar-link">
+        <span class="sidebar-link-icon">◈</span> Google Scholar
+      </a>
+      <a href="https://github.com/fymao1205" target="_blank" class="sidebar-link">
+        <span class="sidebar-link-icon">⌥</span> GitHub
+      </a>
+      <a href="https://orcid.org/0000-0003-1162-4348" target="_blank" class="sidebar-link">
+        <span class="sidebar-link-icon">◎</span> ORCID
+      </a>
+    </div>
+
+  </div><!-- /sidebar -->
+
+  <!-- OVERLAY -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- MAIN CONTENT -->
+  <div class="content">
+
+    <!-- PAGE NAV -->
+    <nav class="page-nav" id="pageNav">
+      <button class="page-btn active" data-page="home">Home</button>
+      <button class="page-btn" data-page="research">Research</button>
+      <button class="page-btn" data-page="collaborate">Collaborate</button>
+      <button class="page-btn" data-page="publications">Publications</button>
+      <button class="page-btn" data-page="talks">Talks</button>
+      <button class="page-btn" data-page="software">Software</button>
+      <button class="page-btn" data-page="awards">Awards</button>
+      <button class="page-btn" data-page="service">Service</button>
+    </nav>
+
+    <!-- HOME PAGE -->
+    <div class="page-panel active" id="page-home">
+
+      <h2 class="section-head">About</h2>
+      <p class="blurb">
+        I am a Tenure-Track Assistant Professor in the Department of Biostatistics at the University at Buffalo (SUNY). My research focuses on two-phase sampling designs, lifetime data analysis, multistate modeling, and statistical methods for cancer screening and disease natural history studies. I develop principled statistical methodology and open-source software to support cost-effective study designs in cancer epidemiology and translational research.
+      </p>
+
+      <h2 class="section-head">News</h2>
+      <div class="pub-year-group">
+        <div class="pub-year-heading">2026</div>
+        <ul class="news-list">
+          <li class="news-item">
+            <span class="news-date">Oct</span>
+            <span class="news-emoji" aria-hidden="true">📄</span>          Three papers published in <strong>JNCI</strong> this month: on <a href="https://doi.org/10.1093/jnci/djag345" target="_blank">markers of CIN2 regression</a><span class="pub-badge badge-cofirst">co-first</span>, on the <a href="https://doi.org/10.1093/jnci/djag360" target="_blank">natural history of oral cancer</a>, and on a <a href="https://doi.org/10.1093/jnci/djag376" target="_blank">new microsimulation model of HPV natural history</a>.
+          </li>
+          <li class="news-item">
+            <span class="news-date">Aug</span>
+            <span class="news-emoji" aria-hidden="true">💼</span>          I joined the Department of Biostatistics at the University at Buffalo as a Tenure-Track Assistant Professor.
+          </li>
+          <li class="news-item">
+            <span class="news-date">Jul</span>
+            <span class="news-emoji" aria-hidden="true">📄</span>          Our paper on <a href="https://doi.org/10.7326/ANNALS-25-04053" target="_blank">immediate versus delayed treatment of CIN2</a>, a target trial emulation, was published in <strong>Annals of Internal Medicine</strong>.<span class="pub-badge badge-cofirst">co-first</span> <span class="news-emoji" aria-hidden="true">📣</span>Featured in an <em>Annals of Internal Medicine</em> <a href="https://www.eurekalert.org/news-releases/1132356" target="_blank">press release</a>.
+          </li>
+          <li class="news-item">
+            <span class="news-date">Jun</span>
+            <span class="news-emoji" aria-hidden="true">📄</span>          Our paper on <a href="https://doi.org/10.1200/GO-25-00541" target="_blank">quitting betel quid, smoking, and alcohol and the risk of oral precancer and cancer</a> was published in <strong>JCO Global Oncology</strong>.<span class="pub-badge badge-cofirst">co-first</span><span class="pub-badge badge-corr">corr</span>
+          </li>
+          <li class="news-item">
+            <span class="news-date">Apr</span>
+            <span class="news-emoji" aria-hidden="true">📄</span>          Our paper <a href="https://doi.org/10.1093/biomtc/ujag058" target="_blank"><em>"Two-phase designs for cost-effective evaluation of cancer screening tests"</em></a> was published in <strong>Biometrics</strong>.<span class="pub-badge badge-first">first</span><span class="pub-badge badge-corr">corr</span>
+          </li>
+          <li class="news-item">
+            <span class="news-date">Jan</span>
+            <span class="news-emoji" aria-hidden="true">📄</span>          Our paper <a href="https://doi.org/10.1093/biostatistics/kxag022" target="_blank"><em>"Data-augmented multistate modeling for chronic disease processes using cross-sectional studies"</em></a> was published in <strong>Biostatistics</strong>.<span class="pub-badge badge-first">first</span><span class="pub-badge badge-corr">corr</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-heading">2025</div>
+        <ul class="news-list">
+          <li class="news-item">
+            <span class="news-date">Dec</span>
+            <span class="news-emoji" aria-hidden="true">🏆</span>          I received the <strong>NIH Fellows' Award for Research Excellence</strong> from the National Institutes of Health.
+          </li>
+          <li class="news-item">
+            <span class="news-date">Mar</span>
+            <span class="news-emoji" aria-hidden="true">📄</span>          Our paper on <a href="https://doi.org/10.1016/j.oraloncology.2025.107210" target="_blank">multistate oral carcinogenesis in a Taiwanese cohort</a> was published in <strong>Oral Oncology</strong>.
+          </li>
+        </ul>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-heading">2024</div>
+        <ul class="news-list">
+          <li class="news-item">
+            <span class="news-date">Nov</span>
+            <span class="news-emoji" aria-hidden="true">📄</span>          Our paper <a href="https://doi.org/10.1093/jrsssc/qlae028" target="_blank"><em>"Two-phase biomarker studies for disease progression with multiple registries"</em></a> was published in <strong>JRSS Series C</strong>.<span class="pub-badge badge-first">first</span><span class="pub-badge badge-corr">corr</span>
+          </li>
+          <li class="news-item">
+            <span class="news-date">Aug</span>
+            <span class="news-emoji" aria-hidden="true">🏆</span>          I received the <strong>DCEG Fellows' Award for Research Excellence</strong> from the Division of Cancer Epidemiology &amp; Genetics, NCI.
+          </li>
+          <li class="news-item">
+            <span class="news-date">Feb</span>
+            <span class="news-emoji" aria-hidden="true">🏆</span>          I received the NIH <strong>Summer Research Mentor Award</strong> for the second consecutive year.
+          </li>
+          <li class="news-item">
+            <span class="news-date">Jan</span>
+            <span class="news-emoji" aria-hidden="true">📄</span>          Our paper <a href="https://doi.org/10.1093/biomtc/ujad038" target="_blank"><em>"Two-phase designs with failure time processes subject to nonsusceptibility"</em></a> was published in <strong>Biometrics</strong>.<span class="pub-badge badge-first">first</span><span class="pub-badge badge-corr">corr</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-heading">2023</div>
+        <ul class="news-list">
+          <li class="news-item">
+            <span class="news-date">Sep</span>
+            <span class="news-emoji" aria-hidden="true">📄</span>          Our paper on <a href="https://doi.org/10.1111/biom.13770" target="_blank">spatial dependence modeling of joint damage in psoriatic arthritis</a> was published in <strong>Biometrics</strong>.<span class="pub-badge badge-first">first</span>
+          </li>
+          <li class="news-item">
+            <span class="news-date">Apr</span>
+            <span class="news-emoji" aria-hidden="true">📄</span>          Our paper <a href="https://doi.org/10.1002/sim.9666" target="_blank"><em>"Two-phase designs with current status data"</em></a> was published in <strong>Statistics in Medicine</strong>.<span class="pub-badge badge-first">first</span><span class="pub-badge badge-corr">corr</span>
+          </li>
+          <li class="news-item">
+            <span class="news-date">Feb</span>
+            <span class="news-emoji" aria-hidden="true">🏆</span>          I received the NIH <strong>Summer Research Mentor Award</strong>.
+          </li>
+        </ul>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-heading">2022</div>
+        <ul class="news-list">
+          <li class="news-item">
+            <span class="news-date">Sep</span>
+            <span class="news-emoji" aria-hidden="true">💼</span>          I joined the Division of Cancer Epidemiology and Genetics at the National Cancer Institute as a Postdoctoral Fellow.
+          </li>
+          <li class="news-item">
+            <span class="news-date">Aug</span>
+            <span class="news-emoji" aria-hidden="true">🏆</span>          I received the <strong>Best Student Paper Award</strong> at the 43rd Annual Conference of the ISCB in Newcastle, UK.
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- RESEARCH PAGE -->
+    <div class="page-panel" id="page-research">
+      <h2 class="section-head">Research Interests</h2>
+      <p style="font-size:0.9rem;color:var(--fg-mid);line-height:1.75;max-width:680px;margin-bottom:28px;">
+        Large cohorts and disease registries hold rich information on how chronic diseases develop, but the measurements that matter most, such as novel biomarkers, are expensive, and disease status is often observed only at irregular clinic visits. My research develops statistical methods that make the most of such data: designs that decide <em>whom</em> to measure, and models that recover <em>how</em> disease progresses from incomplete observation. I apply these methods to cancer prevention, with the goal of informing screening and management decisions.
+      </p>
+
+      <div class="sub-label">Cost-Efficient Study Designs</div>
+      <p style="font-size:0.87rem;color:var(--fg-mid);line-height:1.75;max-width:660px;margin-bottom:6px;">
+        When an assay can be run on only a fraction of stored specimens, two-phase designs choose that fraction to maximize statistical efficiency. I develop such designs for settings where standard methods break down:
+      </p>
+      <ul style="font-size:0.87rem;color:var(--fg-mid);line-height:1.9;padding-left:20px;margin-bottom:24px;max-width:660px;">
+        <li>Outcomes known only as current status or through intermittent visits <span style="color:var(--fg-mute)">(<a href="https://doi.org/10.1002/sim.9666" target="_blank">Stat Med 2023</a>)</span></li>
+        <li>Populations in which some individuals will never experience the event <span style="color:var(--fg-mute)">(<a href="https://doi.org/10.1093/biomtc/ujad038" target="_blank">Biometrics 2024</a>)</span></li>
+        <li>Pooling multiple registries with different recruitment and truncation schemes <span style="color:var(--fg-mute)">(<a href="https://doi.org/10.1093/jrsssc/qlae028" target="_blank">JRSS-C 2024</a>)</span></li>
+        <li>Evaluating new cancer screening tests on archived samples <span style="color:var(--fg-mute)">(<a href="https://doi.org/10.1093/biomtc/ujag058" target="_blank">Biometrics 2026</a>)</span></li>
+      </ul>
+
+      <div class="sub-label">Disease Natural History &amp; Multistate Models</div>
+      <p style="font-size:0.87rem;color:var(--fg-mid);line-height:1.75;max-width:660px;margin-bottom:6px;">
+        Understanding how precancers arise, persist, regress, and progress is central to deciding when to screen and whom to treat. I build multistate and latent-variable models for these processes:
+      </p>
+      <ul style="font-size:0.87rem;color:var(--fg-mid);line-height:1.9;padding-left:20px;margin-bottom:24px;max-width:660px;">
+        <li>Data-augmented multistate models that combine cross-sectional and longitudinal studies of HPV and cervical precancer <span style="color:var(--fg-mute)">(<a href="https://doi.org/10.1093/biostatistics/kxag022" target="_blank">Biostatistics 2026</a>)</span></li>
+        <li>Microsimulation of HPV natural history for comparing novel cervical screening strategies <span style="color:var(--fg-mute)">(<a href="https://doi.org/10.1093/jnci/djag376" target="_blank">JNCI 2026</a>)</span></li>
+        <li>Clinical and lifetime natural history of oral cancer <span style="color:var(--fg-mute)">(<a href="https://doi.org/10.1093/jnci/djag360" target="_blank">JNCI 2026</a>)</span></li>
+        <li>Spatial dependence in latent susceptibility and joint damage in psoriatic arthritis <span style="color:var(--fg-mute)">(<a href="https://doi.org/10.1111/biom.13770" target="_blank">Biometrics 2023</a>)</span></li>
+      </ul>
+
+      <div class="sub-label">Evidence for Cancer Prevention</div>
+      <p style="font-size:0.87rem;color:var(--fg-mid);line-height:1.75;max-width:660px;margin-bottom:6px;">
+        Working with clinical and epidemiological collaborators, I turn observational data into evidence for prevention and management guidelines:
+      </p>
+      <ul style="font-size:0.87rem;color:var(--fg-mid);line-height:1.9;padding-left:20px;margin-bottom:24px;max-width:660px;">
+        <li>Immediate versus delayed treatment of CIN2, estimated by target trial emulation <span style="color:var(--fg-mute)">(<a href="https://doi.org/10.7326/ANNALS-25-04053" target="_blank">Ann Intern Med 2026</a>)</span></li>
+        <li>Markers of CIN2 regression and subsequent risk of CIN3+ <span style="color:var(--fg-mute)">(<a href="https://doi.org/10.1093/jnci/djag345" target="_blank">JNCI 2026</a>)</span></li>
+        <li>Quitting betel quid, smoking, and alcohol and the risk of oral precancer and cancer <span style="color:var(--fg-mute)">(<a href="https://doi.org/10.1200/GO-25-00541" target="_blank">JCO Glob Oncol 2026</a>)</span></li>
+      </ul>
+
+      <div class="sub-label">Collaborative Data Sources</div>
+      <ul style="font-size:0.87rem;color:var(--fg-mid);line-height:1.9;padding-left:20px;max-width:660px;">
+        <li>NCI cervical cancer screening cohorts (Kaiser Permanente, KPNC)</li>
+        <li>NCI Oral Cancer Natural History Cohort Study in Taiwan</li>
+        <li>Prostate, Lung, Colorectal, and Ovarian (PLCO) Cancer Screening Trial</li>
+        <li>Costa Rica Vaccine Trial (CVT) natural history study</li>
+        <li>Psoriatic arthritis disease registries (University of Toronto)</li>
+      </ul>
+    </div>
+
+    <!-- COLLABORATE PAGE -->
+    <div class="page-panel" id="page-collaborate">
+      <h2 class="section-head">Collaboration &amp; Consulting</h2>
+      <p style="font-size:0.9rem;color:var(--fg-mid);line-height:1.75;max-width:680px;margin-bottom:8px;">
+        I welcome collaborations with clinical, epidemiological, and laboratory investigators, from the planning stage of a study through to publication, including statistical contributions to grant proposals. Areas where I can help include, but are not limited to:
+      </p>
+
+      <div class="sub-label">Study Design &amp; Planning</div>
+      <ul style="font-size:0.87rem;color:var(--fg-mid);line-height:1.9;padding-left:20px;margin-bottom:20px;max-width:660px;">
+        <li>Sample size and power calculations, including for time-to-event and multistate endpoints</li>
+        <li>Cost-efficient biomarker sub-studies within existing cohorts and biobanks: two-phase, case-cohort, and nested case-control sampling</li>
+        <li>Statistical analysis plans and design sections for grant proposals</li>
+      </ul>
+
+      <div class="sub-label">Data Analysis</div>
+      <ul style="font-size:0.87rem;color:var(--fg-mid);line-height:1.9;padding-left:20px;margin-bottom:20px;max-width:660px;">
+        <li>Survival (time-to-event) analysis under various censoring and truncation mechanisms: right-, left-, and interval-censored, current status, and left- or right-truncated data</li>
+        <li>Multistate modeling of disease progression, regression, and transitions between clinical states</li>
+        <li>Evaluation of screening and diagnostic tests: accuracy, risk stratification, and management thresholds</li>
+        <li>Target trial emulation for comparing treatment or surveillance strategies with observational data</li>
+        <li>Risk prediction modeling and validation using registry, EHR, and cohort data</li>
+      </ul>
+
+      <div style="max-width:660px;padding:14px 16px;background:var(--bg-soft);border-left:3px solid var(--navy);border-radius:6px;font-size:0.87rem;color:var(--fg-mid);line-height:1.7;">
+        Interested in working together? Email me at <a href="mailto:fangyama@buffalo.edu">fangyama@buffalo.edu</a> with a brief description of your study, its data, and your timeline.
+      </div>
+    </div>
+
+    <!-- SOFTWARE PAGE -->
+    <div class="page-panel" id="page-software">
+      <h2 class="section-head">Software</h2>
+      <ul class="sw-list">
+        <li class="sw-card">
+          <div><strong><a href="https://github.com/fymao1205/TwoPhaseScreenTest" target="_blank">TwoPhaseScreenTest</a></strong> &nbsp;·&nbsp; R package</div>
+          <div style="margin-top:4px">Two-phase designs for cost-effective evaluation of cancer screening tests.<br><span style="font-size:0.81rem;color:var(--fg-mute)">Mao F., Cook R.J., and Cheung L.C. (2024)</span></div>
+        </li>
+        <li class="sw-card">
+          <div><strong><a href="https://github.com/fymao1205/TwoPhaseCure" target="_blank">TwoPhaseCure</a></strong> &nbsp;·&nbsp; R package</div>
+          <div style="margin-top:4px">Design and analysis of two-phase studies with failure time processes subject to non-susceptibility.<br><span style="font-size:0.81rem;color:var(--fg-mute)">Mao F., Cheung L.C., and Cook R.J. (2023)</span></div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- PUBLICATIONS PAGE -->
+    <div class="page-panel" id="page-publications">
+
+      <!-- legend -->
+      <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:20px;font-size:0.81rem;color:var(--fg-mute);">
+        <span>Border color:</span>
+        <span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;border-radius:2px;background:var(--navy);display:inline-block;"></span> Statistical Methodology</span>
+        <span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;border-radius:2px;background:var(--gold);display:inline-block;"></span> Collaborative Research</span>
+        <span style="display:inline-flex;align-items:center;gap:6px;"><span class="pub-badge badge-corr">corr</span> Corresponding author</span>
+        <span style="display:inline-flex;align-items:center;gap:6px;"><span class="pub-badge badge-cofirst">co-first</span> Equal contribution</span>
+      </div>
+
+      <!-- 2026 -->
+      <div class="pub-year-group">
+        <div class="pub-year-heading">2026</div>
+        <ul class="pub-list">
+          <li class="pub-item method">
+            <div><span class="pub-me">Mao F</span>, Cook RJ, Lorey T, Wentzensen N, and Cheung LC. Two-phase designs for cost-effective evaluation of cancer screening tests. Biometrics, 2026, 80(2), ujag058.</div>
+            <div class="pub-footer"><a href="https://doi.org/10.1093/biomtc/ujag058" target="_blank">[doi]</a><span class="pub-badges"><span class="pub-badge badge-corr">corr</span></span></div>
+          </li>
+          <li class="pub-item method">
+            <div><span class="pub-me">Mao F</span>, Campos N, and Cheung LC. Data-augmented multistate modeling for chronic disease processes using cross-sectional studies: application to HPV and cervical precancer. Biostatistics, 2026, 27(1), kxag022.</div>
+            <div class="pub-footer"><a href="https://doi.org/10.1093/biostatistics/kxag022" target="_blank">[doi]</a><span class="pub-badges"><span class="pub-badge badge-corr">corr</span></span></div>
+          </li>
+          <li class="pub-item collab">
+            <div>Campos NG, Cheung LC, <span class="pub-me">Mao F</span>, et al. A new microsimulation model of HPV natural history for comparison of novel cervical screening strategies. JNCI: Journal of the National Cancer Institute, 2026, djag376.</div>
+            <div class="pub-footer"><a href="https://doi.org/10.1093/jnci/djag376" target="_blank">[doi]</a></div>
+          </li>
+          <li class="pub-item collab">
+            <div>Cheung LC, …, <span class="pub-me">Mao F</span>, …, Chaturvedi AK. Clinical and lifetime natural history of oral cancer: implications for screening and surveillance. JNCI: Journal of the National Cancer Institute, 2026, djag360.</div>
+            <div class="pub-footer"><a href="https://doi.org/10.1093/jnci/djag360" target="_blank">[doi]</a></div>
+          </li>
+          <li class="pub-item collab">
+            <div>Cheung LC, <span class="pub-me">Mao F</span>, …, Castle PE. Markers of cervical intraepithelial neoplasia grade 2 regression and subsequent risk of CIN3+. JNCI: Journal of the National Cancer Institute, 2026, djag345.</div>
+            <div class="pub-footer"><a href="https://doi.org/10.1093/jnci/djag345" target="_blank">[doi]</a><span class="pub-badges"><span class="pub-badge badge-cofirst">co-first</span></span></div>
+          </li>
+          <li class="pub-item collab">
+            <div>Cheung LC, <span class="pub-me">Mao F</span>, …, Castle PE. Benefits and harms of immediate versus delayed treatment of cervical intraepithelial neoplasia grade 2: a target trial emulation. Annals of Internal Medicine, 2026, 179, 980–987.</div>
+            <div class="pub-footer"><a href="https://doi.org/10.7326/ANNALS-25-04053" target="_blank">[doi]</a><span class="pub-badges"><span class="pub-badge badge-cofirst">co-first</span></span><span style="font-size:0.8rem;color:var(--fg-mute);">Media: <a href="https://www.eurekalert.org/news-releases/1132356" target="_blank">ACP press release</a> · <a href="https://www.2minutemedicine.com/delayed-cin2-treatment-does-not-increase-cancer-risk/" target="_blank">2 Minute Medicine</a> · <a href="https://oncologynews.com.au/?p=60959" target="_blank">Oncology News Australia</a></span></div>
+          </li>
+          <li class="pub-item collab">
+            <div><span class="pub-me">Mao F</span>, Chen TC, …, Chaturvedi AK. Cessation of betel quid chewing, smoking, and alcohol drinking and risk of oral precancer and oral cancer. JCO Global Oncology, 2026, 12, e2500541.</div>
+            <div class="pub-footer"><a href="https://doi.org/10.1200/GO-25-00541" target="_blank">[doi]</a><span class="pub-badges"><span class="pub-badge badge-cofirst">co-first</span><span class="pub-badge badge-corr">corr</span></span></div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 2025 -->
+      <div class="pub-year-group">
+        <div class="pub-year-heading">2025</div>
+        <ul class="pub-list">
+          <li class="pub-item collab">
+            <div>Wang C-P, Yu K, …, <span class="pub-me">Mao F</span>, …, Chaturvedi AK. Multistate oral carcinogenesis — a prospective cohort study and a parallel case-control study in Taiwan. Oral Oncology, 2025, 162, 107210.</div>
+            <div class="pub-footer"><a href="https://doi.org/10.1016/j.oraloncology.2025.107210" target="_blank">[doi]</a></div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 2024 -->
+      <div class="pub-year-group">
+        <div class="pub-year-heading">2024</div>
+        <ul class="pub-list">
+          <li class="pub-item method">
+            <div><span class="pub-me">Mao F</span> and Cook RJ. Two-phase biomarker studies for disease progression with multiple registries. Journal of the Royal Statistical Society Series C: Applied Statistics, 2024, 73(5), 1111–1133.</div>
+            <div class="pub-footer"><a href="https://doi.org/10.1093/jrsssc/qlae028" target="_blank">[doi]</a><span class="pub-badges"><span class="pub-badge badge-corr">corr</span></span></div>
+          </li>
+          <li class="pub-item method">
+            <div><span class="pub-me">Mao F</span>, Cheung LC, and Cook RJ. Two-phase designs with failure time processes subject to nonsusceptibility. Biometrics, 2024, 80(1), ujad038.</div>
+            <div class="pub-footer"><a href="https://doi.org/10.1093/biomtc/ujad038" target="_blank">[doi]</a><span class="pub-badges"><span class="pub-badge badge-corr">corr</span></span></div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 2023 -->
+      <div class="pub-year-group">
+        <div class="pub-year-heading">2023</div>
+        <ul class="pub-list">
+          <li class="pub-item method">
+            <div><span class="pub-me">Mao F</span> and Cook RJ. Two-phase designs with current status data. Statistics in Medicine, 2023, 42(8), 1207–1232.</div>
+            <div class="pub-footer"><a href="https://doi.org/10.1002/sim.9666" target="_blank">[doi]</a><span class="pub-badges"><span class="pub-badge badge-corr">corr</span></span></div>
+          </li>
+          <li class="pub-item method">
+            <div><span class="pub-me">Mao F</span> and Cook RJ. Spatial dependence modeling of latent susceptibility and time to joint damage in psoriatic arthritis. Biometrics, 2023, 79(3), 2605–2618.</div>
+            <div class="pub-footer"><a href="https://doi.org/10.1111/biom.13770" target="_blank">[doi]</a></div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- TALKS PAGE -->
+    <div class="page-panel" id="page-talks">
+      <h2 class="section-head">Talks</h2>
+
+      <!-- legend -->
+      <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:20px;font-size:0.81rem;color:var(--fg-mute);">
+        <span>Border color:</span>
+        <span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;border-radius:2px;background:var(--talk-inv);display:inline-block;"></span> Invited Session / Seminar</span>        <span style="font-style:italic;">* = scheduled</span>
+      </div>
+
+      <!-- 2027 -->
+      <div class="pub-year-group">
+        <div class="pub-year-heading">2027</div>
+        <ul class="pub-list">
+          <li class="pub-item talk-inv">
+            <div>Mao F. <em>Data-augmented multistate modeling for chronic disease processes using cross-sectional studies: application to HPV and cervical precancer.</em>* Lifetime Data Science (LiDS) Conference, Milwaukee, WI, June 9–11.</div>
+          </li>
+          <li class="pub-item talk-inv">
+            <div>Mao F. <em>Risk-based two-phase sampling for cost-effective biomarker assessment in cancer research.</em>* Statistical Society of Canada (SSC) Annual Meeting, Québec City, QC, May 30–June 2.</div>
+          </li>
+          <li class="pub-item talk-inv">
+            <div>Mao F. <em>Data-augmented multistate modeling for chronic disease processes using cross-sectional studies: application to HPV and cervical precancer.</em>* ENAR Spring Meeting, Boston, MA, March 14–17.</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 2026 -->
+      <div class="pub-year-group">
+        <div class="pub-year-heading">2026</div>
+        <ul class="pub-list">
+          <li class="pub-item talk-tc">
+            <div>Mao F. <em>Two-phase designs for cost-effective evaluation of cancer screening tests.</em> Joint Statistical Meetings, Boston, MA, August 1–6.</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 2025 -->
+      <div class="pub-year-group">
+        <div class="pub-year-heading">2025</div>
+        <ul class="pub-list">
+          <li class="pub-item talk-inv">
+            <div>Mao F. <em>Design and analysis of two-phase biomarker studies with lifetime data.</em> Lifetime Data Science Conference, New York, NY, May 28–30.</div>
+          </li>
+          <li class="pub-item talk-inv">
+            <div>Mao F. <em>Two-phase biomarker studies for disease progression using multiple registries with different truncation schemes.</em> ENAR Spring Meeting, New Orleans, LA, March 23–26.</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 2024 -->
+      <div class="pub-year-group">
+        <div class="pub-year-heading">2024</div>
+        <ul class="pub-list">
+          <li class="pub-item talk-inv">
+            <div>Mao F. <em>Two-phase designs for cost-effective evaluation of cancer screening tests.</em> 18th International Joint Conference CFE-CMStatistics, London, UK, December 14–16.</div>
+          </li>
+          <li class="pub-item talk-tc">
+            <div>Mao F. <em>Two-phase designs with left- or interval-censored data from electronic health records.</em> Joint Statistical Meetings, Portland, OR, August 6–11.</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 2023 -->
+      <div class="pub-year-group">
+        <div class="pub-year-heading">2023</div>
+        <ul class="pub-list">
+          <li class="pub-item talk-inv">
+            <div>Mao F. <em>Two-phase designs with lifetime data.</em> SLAM Working Group, Johns Hopkins Bloomberg School of Public Health, Baltimore, MD, September 22.</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 2022 -->
+      <div class="pub-year-group">
+        <div class="pub-year-heading">2022</div>
+        <ul class="pub-list">
+          <li class="pub-item talk-inv">
+            <div>Mao F. <em>Spatial dependence modeling of latent susceptibility and time to joint damage in psoriatic arthritis.</em> Joint Statistical Meetings, Washington, D.C., August 6–11.</div>
+          </li>
+          <li class="pub-item talk-inv">
+            <div>Mao F. <em>Spatial dependence modeling of susceptibility and failure times under intermittent observation.</em> 5th ICSA-Canada Chapter Symposium, Banff, AB, July 8–10.</div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- AWARDS PAGE -->
+    <div class="page-panel" id="page-awards">
+      <h2 class="section-head">Research Awards &amp; Honors</h2>
+      <ul class="simple-list">
+        <li class="simple-item"><span class="si-yr">2025</span><span><strong>NIH Fellows' Award for Research Excellence</strong>, National Institutes of Health</span></li>
+        <li class="simple-item"><span class="si-yr">2024</span><span><strong>DCEG Fellows' Award for Research Excellence</strong>, Division of Cancer Epidemiology &amp; Genetics, NCI</span></li>
+        <li class="simple-item"><span class="si-yr">2024</span><span><strong>Summer Research Mentor Award</strong>, NIH</span></li>
+        <li class="simple-item"><span class="si-yr">2023</span><span><strong>Summer Research Mentor Award</strong>, NIH</span></li>
+        <li class="simple-item"><span class="si-yr">2022</span><span><strong>Best Student Paper Award</strong>, 43rd Annual Conference of the ISCB, Newcastle, UK</span></li>
+        <li class="simple-item"><span class="si-yr">2021</span><span><strong>Best Research Presentation in Statistics and Actuarial Science</strong>, University of Waterloo</span></li>
+        <li class="simple-item"><span class="si-yr">2020</span><span><strong>Sprott Award, Best Ph.D. Thesis Proposal in Biostatistics</strong>, University of Waterloo</span></li>
+      </ul>
+    </div>
+
+    <!-- SERVICE PAGE -->
+    <div class="page-panel" id="page-service">
+      <h2 class="section-head">Conference &amp; Professional Service</h2>
+
+      <div class="pub-year-group">
+        <div class="pub-year-heading">2027</div>
+        <ul class="simple-list">
+          <li class="simple-item"><span class="si-yr">Session Organizer</span><span>ENAR Spring Meeting, Boston, MA, Mar. 2027</span></li>
+        </ul>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-heading">2026</div>
+        <ul class="simple-list">
+          <li class="simple-item"><span class="si-yr">Chair Judge</span><span>NIH FARE Award, 2026</span></li>
+          <li class="simple-item"><span class="si-yr">Judge</span><span>DCEG FARE Award, 2026</span></li>
+          <li class="simple-item"><span class="si-yr">Session Organizer &amp; Chair</span><span>Joint Statistical Meetings, Boston, MA, Aug. 2026</span></li>
+          <li class="simple-item"><span class="si-yr">Session Chair</span><span>ENAR Spring Meeting, 2026</span></li>
+        </ul>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-heading">2025</div>
+        <ul class="simple-list">
+          <li class="simple-item"><span class="si-yr">Session Organizer</span><span>ENAR Spring Meeting, New Orleans, LA, Mar. 2025</span></li>
+          <li class="simple-item"><span class="si-yr">Session Chair</span><span>ENAR Spring Meeting, New Orleans, LA, Mar. 2025</span></li>
+          <li class="simple-item"><span class="si-yr">Judge</span><span>21st Annual NIH Graduate Student Research Symposium, 2025</span></li>
+        </ul>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-heading">2024</div>
+        <ul class="simple-list">
+          <li class="simple-item"><span class="si-yr">Session Organizer</span><span>18th International Joint Conference CFE-CMStatistics, London, UK, Dec. 2024</span></li>
+          <li class="simple-item"><span class="si-yr">Session Organizer &amp; Chair</span><span>Joint Statistical Meetings, Portland, OR, Aug. 2024</span></li>
+          <li class="simple-item"><span class="si-yr">Session Chair</span><span>ENAR Spring Meeting, 2024</span></li>
+        </ul>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-heading">2023</div>
+        <ul class="simple-list">
+          <li class="simple-item"><span class="si-yr">Planning Committee</span><span>15th DCEG Fellow's Symposium, NCI, 2023</span></li>
+          <li class="simple-item"><span class="si-yr">Judge</span><span>19th Annual NIH Graduate Student Research Symposium, 2023</span></li>
+        </ul>
+      </div>
+
+      <h2 class="section-head" style="margin-top:36px">Ad-Hoc Journal Review</h2>
+      <div class="sub-label" style="margin-top:8px">Statistical Journals</div>
+      <ul class="simple-list">
+        <li class="simple-item" style="border:none;padding:3px 0"><span class="si-yr"></span><span style="font-size:0.87rem">Journal of the American Statistical Association</span></li>
+        <li class="simple-item" style="border:none;padding:3px 0"><span class="si-yr"></span><span style="font-size:0.87rem">Biometrics</span></li>
+        <li class="simple-item" style="border:none;padding:3px 0"><span class="si-yr"></span><span style="font-size:0.87rem">Statistics in Medicine</span></li>
+        <li class="simple-item" style="border:none;padding:3px 0"><span class="si-yr"></span><span style="font-size:0.87rem">Lifetime Data Analysis</span></li>
+        <li class="simple-item" style="border:none;padding:3px 0"><span class="si-yr"></span><span style="font-size:0.87rem">Canadian Journal of Statistics</span></li>
+        <li class="simple-item" style="border:none;padding:3px 0"><span class="si-yr"></span><span style="font-size:0.87rem">Journal of Computational and Graphical Statistics</span></li>
+      </ul>
+      <div class="sub-label" style="margin-top:12px">Biomedical Journals</div>
+      <ul class="simple-list">
+        <li class="simple-item" style="border:none;padding:3px 0"><span class="si-yr"></span><span style="font-size:0.87rem">JCO Clinical Cancer Informatics</span></li>
+        <li class="simple-item" style="border:none;padding:3px 0"><span class="si-yr"></span><span style="font-size:0.87rem">Cancer Epidemiology, Biomarkers &amp; Prevention</span></li>
+      </ul>
+
+    </div>
+
+    <!-- MENTORING PAGE (hidden for now) -->
+    <div class="page-panel" id="page-mentoring" hidden>
+      <h2 class="section-head">Teaching</h2>
+      <ul class="simple-list">
+        <li class="simple-item"><span class="si-yr">2025</span><span>Co-designer &amp; Co-instructor — <strong>Multistate Models for Studying the Natural History of Cancer</strong> (short course, NCI/NIH)</span></li>
+        <li class="simple-item"><span class="si-yr">2016–2022</span><span>Teaching Assistant — probability, statistics, and stochastic processes (University of Waterloo)</span></li>
+      </ul>
+
+      <h2 class="section-head" style="margin-top:36px">Mentoring</h2>
+      <ul class="simple-list">
+        <li class="simple-item"><span class="si-yr">2026–</span><span>Mentor, <strong>Daniel Viola</strong> (Graduate Student, University at Buffalo)</span></li>
+        <li class="simple-item"><span class="si-yr">2026–</span><span>Mentor, <strong>Yali Xie</strong> (Graduate Student, University at Buffalo)</span></li>
+        <li class="simple-item"><span class="si-yr">2024–2026</span><span>Secondary Mentor, <strong>Guannan Chen</strong> (Ph.D., George Washington University)</span></li>
+        <li class="simple-item"><span class="si-yr">2024</span><span>Primary Mentor†, <strong>Cameron Loats</strong> (Graduate Summer Student, NIH)</span></li>
+        <li class="simple-item"><span class="si-yr">2024</span><span>Secondary Mentor, <strong>Justin Cole</strong> (Undergraduate Summer Student, NIH)</span></li>
+        <li class="simple-item"><span class="si-yr">2023</span><span>Primary Mentor†, <strong>Andres Garcia Garcia</strong> (Graduate Summer Student, NIH)</span></li>
+        <li class="simple-item"><span class="si-yr">2023</span><span>Secondary Mentor, <strong>Maddie Reeve</strong> (Undergraduate Summer Student, NIH)</span></li>
+      </ul>
+      <p style="font-size:0.79rem;color:var(--fg-mute);margin-top:10px">† Funded by NIH Summer Research Mentor Award</p>
+
+      <h2 class="section-head" style="margin-top:36px">Professional Development</h2>
+      <ul class="simple-list">
+        <li class="simple-item"><span class="si-yr">2026</span><span>Early Career Workshop Series (ECWS), ENAR</span></li>
+        <li class="simple-item"><span class="si-yr">2026</span><span>NSF Proposal Writing Series, University at Buffalo</span></li>
+        <li class="simple-item"><span class="si-yr">2026</span><span>New Faculty Academy – Teaching Track, University at Buffalo</span></li>
+      </ul>
+    </div>
+
+  </div><!-- /content -->
+
+</div><!-- /layout -->
+
+<script>
+(function () {
+  // page navigation
+  const pageBtns = document.querySelectorAll('.page-btn');
+  const panels = document.querySelectorAll('.page-panel');
+
+  function activatePage(page) {
+    pageBtns.forEach(b => b.classList.toggle('active', b.dataset.page === page));
+    panels.forEach(p => p.classList.toggle('active', p.id === 'page-' + page));
+  }
+  pageBtns.forEach(btn => btn.addEventListener('click', () => activatePage(btn.dataset.page)));
+
+  // mobile sidebar toggle
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  const toggle  = document.getElementById('menuToggle');
+
+  function openSidebar() {
+    sidebar.classList.add('open');
+    overlay.classList.add('show');
+  }
+  function closeSidebar() {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('show');
+  }
+
+  toggle.addEventListener('click', () => {
+    sidebar.classList.contains('open') ? closeSidebar() : openSidebar();
+  });
+  overlay.addEventListener('click', closeSidebar);
+})();
+</script>
